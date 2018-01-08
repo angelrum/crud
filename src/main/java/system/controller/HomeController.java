@@ -64,15 +64,14 @@ public class HomeController {
     @RequestMapping(value = "/edit", method = RequestMethod.GET, params = {"delete", "id"})
     public ModelAndView deleteBook(HttpServletRequest request) {
         String[] ids = request.getParameterValues("id");
+        for (String id : ids)
+            this.bookDao.deleteBook(Integer.parseInt(id));
         ModelAndView mav = getHomePage(true);
         if (ids.length==0){
             mav.addObject("message", "Не были выбраны книги для удаления");
             return mav;
-        }
-
-        for (String id : ids)
-            this.bookDao.deleteBook(Integer.parseInt(id));
-        mav.addObject("message", "Книга(и) удалены");
+        } else
+            mav.addObject("message", "Книга(и) удалены");
         return mav;
     }
 
