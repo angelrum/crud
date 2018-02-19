@@ -27,6 +27,7 @@ public class BookController {
     public BookController(BookDao bookDao) {
         this.bookDao = bookDao;
     }
+
     @RequestMapping(method = RequestMethod.GET, params = "new")
     public String createBook(Model model) {
         model.addAttribute("entity", new TestEntity());

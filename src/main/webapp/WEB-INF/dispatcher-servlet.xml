@@ -3,14 +3,15 @@
        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:mvc="http://www.springframework.org/schema/mvc"
        xmlns:context="http://www.springframework.org/schema/context"
        xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc.xsd http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd">
-    <!--включение аннотаций-->
+    <!--включение аннотаций mvc??-->
     <mvc:annotation-driven />
     <!--Определяет обработчик статического содержимого (изображения)-->
     <mvc:resources mapping="/resources/**" location="classpath:resources" />
     <mvc:resources mapping="/theme/**" location="/resources/theme/" cache-period="31556926" />
-    <!--Определяем папку, в которой будет выполняться поиск контроллеров-->
+    <!--Cообщает фреймворку о необходимости учитывать аннотации в компонентах при их связывании.
+    И настраивает автоматическое определение компонентов-->
     <context:component-scan base-package="system.controller" />
-    <context:annotation-config /> <!--????-->
+
     <!-- Настройка поиска внутренних представлений -->
     <bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
         <property name="prefix" value="/WEB-INF/views/" />

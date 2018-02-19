@@ -74,7 +74,7 @@
                 </c:otherwise>
             </c:choose>
         </form>
-        <c:if test="${search==false}">
+        <c:if test="${searchParam==null}">
             <c:choose>
                 <c:when test="${prevPage}">
                     <a href="/?page=${thisPage - 1}">Пред. стр.</a>

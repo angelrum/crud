@@ -12,7 +12,7 @@
         <property name="connection.password">root</property>
 
         <mapping class="system.model.TestEntity"/>
-        <mapping resource="hibernate/TestEntity.hbm.xml"/>
+        <!--<mapping resource="hibernate/TestEntity.hbm.xml"/>-->
         <!-- DB schema will be updated if needed -->
         <!--<property name="hbm2ddl.auto">update</property>-->
     </session-factory>

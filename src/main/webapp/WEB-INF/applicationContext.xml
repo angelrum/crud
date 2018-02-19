@@ -5,13 +5,20 @@
        xsi:schemaLocation="http://www.springframework.org/schema/beans
                            http://www.springframework.org/schema/beans/spring-beans.xsd
                            http://www.springframework.org/schema/context
-                           http://www.springframework.org/schema/context/spring-context.xsd http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx.xsd">
+                           http://www.springframework.org/schema/context/spring-context.xsd
+                           http://www.springframework.org/schema/tx
+                           http://www.springframework.org/schema/tx/spring-tx.xsd">
 
+    <!--загружаем дополнительные файлы свойств-->
     <context:property-placeholder location="classpath:sql-configuration.properties" />
 
     <bean id="bookDao" class="system.model.dao.BookDaoImpl" scope="singleton" destroy-method="destroy">
         <constructor-arg name="sessionFactory" ref="sessionFactory" />
     </bean>
+
+    <!--PersistenceExceptionTranslationPostProcessor  – это механизм постобработки компонентов, добавляющий объект-советник во все компоненты,
+        отмеченные аннотацией @Repository , который будет перехватывать все специфические исключения и преобразовывать их в соответствующие неконтролируемые исключения Spring.-->
+    <bean class="org.springframework.dao.annotation.PersistenceExceptionTranslationPostProcessor"/>
 
     <bean id="dataSource" class="org.springframework.jdbc.datasource.SingleConnectionDataSource">
         <property name="driverClassName" value="${jdbc.driverClassName}" />

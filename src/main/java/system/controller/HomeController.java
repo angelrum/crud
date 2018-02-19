@@ -95,7 +95,7 @@ public class HomeController {
         List<TestEntity> list = this.bookDao.getBookByLine(search);
         if (!list.isEmpty()) {
             mav.addObject("bookList", list);
-            mav.addObject("search", true);
+            mav.addObject("searchParam", true);
         }
         return mav;
     }
